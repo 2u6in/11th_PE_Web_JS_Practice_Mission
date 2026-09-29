@@ -20,6 +20,7 @@ export default function Pagination(props: PaginationProps) {
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
+        ‹
       </button>
 
       {pageNumbers.map((page) => (
@@ -38,6 +39,7 @@ export default function Pagination(props: PaginationProps) {
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
+        ›
       </button>
     </nav>
   );
