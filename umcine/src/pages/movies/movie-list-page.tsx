@@ -3,6 +3,7 @@ import MovieGrid from "../../components/movies/movie-grid";
 import Pagination from "../../components/movies/pagination";
 import { movies as initialMovies } from "../../data/movies";
 import "../../App.css";
+import { cn } from "../../utils/cn";
 
 export function MovieListPage() {
   const [movies, setMovies] = useState(initialMovies);
@@ -28,8 +29,8 @@ export function MovieListPage() {
   }
 
   return (
-    <main>
-      <h1 id="movies">영화 목록</h1>
+    <main className="px-[80px] pt-[24px]">
+      <h1 id="movies" className="mb-[20px] h-11 w-fit text-[38px] font-bold leading-[44px] tracking-[-3px]">영화 목록</h1>
 
       <MovieGrid
         movies={currentMovies}

@@ -17,13 +17,7 @@ a {
 }
 
 button {
-  font: inherit;
   cursor: pointer;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
 }
 
 button:disabled {
