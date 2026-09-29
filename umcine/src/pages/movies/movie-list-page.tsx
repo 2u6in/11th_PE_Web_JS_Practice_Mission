@@ -3,7 +3,6 @@ import MovieGrid from "../../components/movies/movie-grid";
 import Pagination from "../../components/movies/pagination";
 import { movies as initialMovies } from "../../data/movies";
 import "../../App.css";
-import { cn } from "../../utils/cn";
 
 export function MovieListPage() {
   const [movies, setMovies] = useState(initialMovies);
