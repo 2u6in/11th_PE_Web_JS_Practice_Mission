@@ -90,59 +90,6 @@ h1 {
   gap: 28px 20px;
 }
 
-.movie-card {
-  min-width: 0;
-}
-
-.poster-wrapper {
-  position: relative;
-}
-
-.movie-poster {
-  width: 100%;
-  aspect-ratio: 0.88;
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-.movie-title {
-  margin: 10px 0 4px;
-  font-size: 16px;
-  line-height: 1.4;
-  letter-spacing: -0.5px;
-}
-
-.movie-date {
-  margin: 0;
-  color: #9ca3af;
-  font-size: 14px;
-}
-
-/* 포스터 위 북마크 */
-.bookmark-button {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border: 1px solid white;
-  border-radius: 10px;
-  background: #202124;
-}
-
-.bookmark-button[aria-pressed="true"] {
-  background: #2563eb;
-  border-color: #2563eb;
-}
-
-.bookmark-button img {
-  width: 24px;
-  height: 24px;
-  filter: brightness(0) invert(1);
-}
-
 /* 페이지 이동 */
 .pagination {
   display: flex;
