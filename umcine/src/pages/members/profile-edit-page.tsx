@@ -45,7 +45,6 @@ function ProfileEditForm({ profile, token }: { profile: MemberProfile; token: st
     try {
       const updated = await updateMemberProfile(token, trimmed);
       if (useAuthStore.getState().accessToken !== token) return;
-      // 진행 중인 조회 응답이 저장한 닉네임을 덮어쓰지 않도록 해요.
       await queryClient.cancelQueries({ queryKey: ["member", token] });
       queryClient.setQueryData(["member", token], updated);
       useAuthStore.getState().setNickname(updated.nickname);
