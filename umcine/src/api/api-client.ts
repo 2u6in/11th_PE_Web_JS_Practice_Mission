@@ -1,4 +1,7 @@
 import ky from "ky";
-import { env } from "../config/env";
+import { assertApiConfigured, env } from "../config/env";
 
-export const apiClient = ky.create({ baseUrl: env.apiBaseUrl });
+export const apiClient = ky.create({
+  baseUrl: env.apiBaseUrl,
+  hooks: { init: [assertApiConfigured] },
+});

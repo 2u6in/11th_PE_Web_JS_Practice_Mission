@@ -3,6 +3,7 @@ import { checkEmailDuplicate } from "../../api/members/check-email-duplicate";
 import { checkNicknameDuplicate } from "../../api/members/check-nickname-duplicate";
 import { signup } from "../../api/members/signup";
 import { Link, useNavigate } from "@tanstack/react-router";
+import { ApiConfigurationError } from "../../config/env";
 
 const DEFAULT_DUPLICATE_CHECK = {
     isChecking: false,
@@ -97,12 +98,14 @@ export function SignupPage() {
                     ? `사용할 수 있는 ${label}이에요.`
                     : `이미 사용 중인 ${label}이에요.`,
             );
-        } catch {
+        } catch (error) {
             setDuplicateCheck((prev) => ({
                 ...prev,
                 [key]: { ...prev[key], isAvailable: false },
             }));
-            alert("중복 확인에 실패했어요. 다시 시도해 주세요.");
+            alert(error instanceof ApiConfigurationError
+                ? error.message
+                : "중복 확인에 실패했어요. 다시 시도해 주세요.");
         } finally {
             setDuplicateCheck((prev) => ({
                 ...prev,
@@ -128,8 +131,10 @@ export function SignupPage() {
             });
             alert(response.message);
             if (response.isSuccess) await navigate({ to: "/login" });
-        } catch {
-            alert("회원가입에 실패했어요. 다시 시도해 주세요.");
+        } catch (error) {
+            alert(error instanceof ApiConfigurationError
+                ? error.message
+                : "회원가입에 실패했어요. 다시 시도해 주세요.");
         } finally {
             setIsSubmitting(false);
         }

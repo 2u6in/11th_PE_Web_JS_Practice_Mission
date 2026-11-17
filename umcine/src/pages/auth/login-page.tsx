@@ -2,6 +2,7 @@ import { useState, type SubmitEvent } from "react";
 import { Link, Navigate, useNavigate } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
 import { HTTPError } from "ky";
+import { ApiConfigurationError } from "../../config/env";
 import { login } from "../../api/auth/login";
 import { useAuthStore } from "../../stores/auth-store";
 
@@ -27,7 +28,9 @@ export function LoginPage() {
       useAuthStore.getState().login(session);
       await navigate({ to: "/me" });
     } catch (error) {
-      setError(error instanceof HTTPError && [400, 401, 403].includes(error.response.status)
+      setError(error instanceof ApiConfigurationError
+        ? error.message
+        : error instanceof HTTPError && [400, 401, 403].includes(error.response.status)
         ? "이메일 또는 비밀번호를 확인해 주세요."
         : "로그인에 실패했어요. 잠시 후 다시 시도해 주세요.");
     } finally {
